@@ -12,6 +12,16 @@ class AccountsController {
       .then((account) => res.status(201).json(account))
       .catch((err) => next(err));
   }
+
+  update(req, res, next) {
+    Account.update(Number(req.params.id), req.body)
+      .then((account) =>
+        account
+          ? res.json(account)
+          : res.status(400).json({ message: "account not found" })
+      )
+      .catch((err) => next(err));
+  }
 }
 
 module.exports = { AccountsController };

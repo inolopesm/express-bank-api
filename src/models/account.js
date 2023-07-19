@@ -21,6 +21,13 @@ class Account {
     Account.#accounts.push(account);
     return account;
   }
+
+  static async update(id, data) {
+    await sleep(Math.random() * 2000);
+    const account = Account.#accounts.find((acc) => acc.id === id);
+    if (account) Object.entries(data).forEach(([k, v]) => { account[k] = v });
+    return account;
+  }
 }
 
 module.exports = { Account };

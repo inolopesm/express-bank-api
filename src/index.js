@@ -11,5 +11,6 @@ const accountsController = new AccountsController();
 
 app.get("/accounts", accountsController.index);
 app.post("/accounts", accountsController.store);
+app.put("/accounts/:id", accountsController.update);
 
 app.listen(port, () => console.log(`Server listening port ${port}`));
