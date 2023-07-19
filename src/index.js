@@ -13,4 +13,10 @@ app.get("/accounts", accountsController.index);
 app.post("/accounts", accountsController.store);
 app.put("/accounts/:id", accountsController.update);
 
+app.use((err, req, res, next) => {
+  console.error(err);
+  if (err instanceof Error) res.status(500).json({ message: err.message });
+  else next(err);
+});
+
 app.listen(port, () => console.log(`Server listening port ${port}`));

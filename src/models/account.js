@@ -11,6 +11,7 @@ class Account {
   static #accounts = [];
 
   static async findAll() {
+    if (Math.random() < 0.33) throw new Error('unexpected error');
     await sleep(Math.random() * 2000);
     return Account.#accounts;
   }
