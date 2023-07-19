@@ -22,6 +22,16 @@ class AccountsController {
       )
       .catch((err) => next(err));
   }
+
+  destroy(req, res, next) {
+    Account.remove(Number(req.params.id))
+      .then((account) =>
+        account
+          ? res.json(account)
+          : res.status(400).json({ message: "account not found" })
+      )
+      .catch((err) => next(err));
+  }
 }
 
 module.exports = { AccountsController };

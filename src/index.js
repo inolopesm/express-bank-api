@@ -12,6 +12,7 @@ const accountsController = new AccountsController();
 app.get("/accounts", accountsController.index);
 app.post("/accounts", accountsController.store);
 app.put("/accounts/:id", accountsController.update);
+app.delete("/accounts/:id", accountsController.destroy);
 
 app.use((req, res, next) =>
   res.status(404).json({ message: "route not found" })

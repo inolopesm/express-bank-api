@@ -29,6 +29,19 @@ class Account {
     if (account) Object.entries(data).forEach(([k, v]) => { account[k] = v });
     return account;
   }
+
+  static async remove(id) {
+    await sleep(Math.random() * 2000);
+    const i = Account.#accounts.findIndex((acc) => acc.id === id);
+    let account;
+
+    if (i >= 0) {
+      account = Account.#accounts[i];
+      Account.#accounts.splice(i, 1);
+    }
+
+    return account;
+  }
 }
 
 module.exports = { Account };
